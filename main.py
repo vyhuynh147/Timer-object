@@ -2,33 +2,29 @@
 class Clock:
     # Constructor method
     # color and number is private prperties. 
-    def __init__(self, time, number, color):
-        self.time = time
-        self.__number = number
+    def __init__(self, timer, color):
+        self.__timer = timer
         self.__color = color
     #get the number
-    def get_number(self):
-        return self.__number
+    def get_timer(self):
+        return f"Setting your {self.__timer} minute timer"
     
     #get color and its return value
     def get_color(self):
         return self.__color
     
-    def set_Alarm(self):
-        self.time +=1
-        print("Clock stopped and alarm is set.")
-
-    def ringer(self):
-        print(f"The bell ringer has {self.__color} color.")
-        print(f"Clock time is {self.time} hours.")
-
-
-#string 
-    def __str__(self):
-        return f" Clock number is {self.__number}, color of bell ring is {self.__color}. And the total hours of clock is {self.time} hours."
-
+    def set_timer(self,timer):
+        self.__timer = timer
+    
 # create object of clock with time, number, color
-c1 = Clock( 24 , 12 , "black")
+c1 = Clock( 24, "black")
 
 #print the object information
-print(c1)
+try:
+    time = int(input("What time you want to set").strip().lower())
+
+    c1.set_timer(time)
+    print(c1.get_timer())
+    print(c1.get_color())
+except:
+    print("friendly error message")
